@@ -1,0 +1,10 @@
+[package]
+name = "cobalt_test"
+version = "0.1.0"
+authors = ["Raphael Nestler <raphael.nestler@gmail.com>"]
+
+[dependencies]
+cobalt = "0.22"
+bincode = "0.8"
+serde = "1.0"
+serde_derive = "1.0"
