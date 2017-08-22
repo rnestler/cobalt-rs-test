@@ -1,20 +1,28 @@
 extern crate cobalt;
+extern crate cobalt_test;
+
+use std::collections::HashMap;
+
+use cobalt_test::Token;
 
 use cobalt::{
-    BinaryRateLimiter, Server, Config, NoopPacketModifier, MessageKind, UdpSocket
+    ConnectionID, BinaryRateLimiter, Server, Config, NoopPacketModifier, MessageKind, UdpSocket
 };
 
+/*
 enum ClientState {
     Connected,
     Disconnected,
 }
+*/
 
 struct Client {
-    state: ClientState,
-    token: self::Token,
+    token: Token,
 }
 
 struct GameServer {
+    connected_clients: HashMap<ConnectionID, Client>,
+    disconnected_clients: Vec<Client>,
 }
 
 fn main() {
