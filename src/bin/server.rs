@@ -4,6 +4,19 @@ use cobalt::{
     BinaryRateLimiter, Server, Config, NoopPacketModifier, MessageKind, UdpSocket
 };
 
+enum ClientState {
+    Connected,
+    Disconnected,
+}
+
+struct Client {
+    state: ClientState,
+    token: self::Token,
+}
+
+struct GameServer {
+}
+
 fn main() {
     // Create a new server that communicates over a udp socket
     let mut server = Server::<UdpSocket, BinaryRateLimiter, NoopPacketModifier>::new(Config::default());
@@ -27,11 +40,11 @@ fn main() {
         // Send all outgoing messages.
         //
         // Also auto delay the current thread to achieve the configured tick rate.
-        server.send(true);
+        server.send(true).unwrap();
 
     }
 
     // Shutdown the server (freeing its socket and closing all its connections)
-    server.shutdown();
+    //server.shutdown().unwrap();
 }
 

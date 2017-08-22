@@ -1,8 +1,8 @@
 extern crate cobalt;
 
-    use cobalt::{
-        BinaryRateLimiter, Client, Config, NoopPacketModifier, MessageKind, UdpSocket
-    };
+use cobalt::{
+    BinaryRateLimiter, Client, Config, NoopPacketModifier, MessageKind, UdpSocket
+};
 
 fn main() {
 
@@ -28,10 +28,10 @@ fn main() {
         // Send all outgoing messages.
         //
         // Also auto delay the current thread to achieve the configured tick rate.
-        client.send(true);
+        client.send(true).unwrap();
 
     }
 
     // Disconnect the client, closing its connection and unbinding its socket
-    client.disconnect();
+    //client.disconnect().unwrap();
 }
